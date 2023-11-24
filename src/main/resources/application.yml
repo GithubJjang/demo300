@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+spring:
+  autoconfigure:
+    exlude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+
+
