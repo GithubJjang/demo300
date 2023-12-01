@@ -53,6 +53,7 @@ jobs:
         run: if failure()
           echo "you have problem!" 
           exit(1)
+          fi
 
 
         
