@@ -44,7 +44,7 @@ jobs:
             github-token: ${{ secrets.GITHUB_TOKEN }}
             script: |
               // Your GitHub Actions bot logic here
-              console.log("Hello from GitHub Actions bot!");
+              core.info("Hello from GitHub Actions bot!");
 
 
       - name: A. 테스트 결과를 PR에 코멘트로 등록합니다
