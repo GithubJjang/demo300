@@ -38,13 +38,3 @@ jobs:
       run:
           echo "you success build"
         
-  handle-error:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check if Gradle build failed
-        run: |
-          result=$?
-          if [ $result -ne 0 ]; then
-            echo "Error file"
-          fi
