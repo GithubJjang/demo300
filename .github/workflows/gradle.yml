@@ -31,6 +31,13 @@ jobs:
         uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
         with:
           arguments: build
+
+      - name: escape when fail to test
+        if: failure()
+        run:
+          echo "Fail!"
+          exit(1)
+
       # Gradle test를 실행한다
       - name: Test with Gradle
         run: ./gradlew --info test
@@ -45,15 +52,7 @@ jobs:
         with:
           files: build/test-results/**/*.xml
 
-  block-push:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: escape when fail to test
-        if: failure()
-        run:
-          echo "Fail!"
-          exit(1)
+
 
 
         
