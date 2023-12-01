@@ -33,11 +33,10 @@ jobs:
           arguments: build
 
       - name: escape when fail to test
-        run: |
-          if  ${{ failure() }} ; then
-          echo "you have a problem!"
+        if: failure() && steps.build.conclusion == 'failure'
+        run:
+          echo "FAIL!"
           exit 1
-          fi
 
       # Gradle test를 실행한다
       - name: Test with Gradle
