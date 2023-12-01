@@ -38,10 +38,21 @@ jobs:
         run:
           echo "you success build"
 
+
       - name: A. 테스트 결과를 PR에 코멘트로 등록합니다
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
           files: build/test-results/**/*.xml
+
+  block-push:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: escape when fail to test
+        run: if failure()
+          echo "you have problem!" 
+          exit(1)
+
 
         
