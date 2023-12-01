@@ -44,6 +44,12 @@ jobs:
         run:
           echo "you success build"
 
+      - name: Only fail
+        if: failure()
+        run:
+          git revert HEAD
+          git push origin master
+
       - name: Only success
         if: success()
         run:
