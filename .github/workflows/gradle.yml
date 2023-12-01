@@ -33,7 +33,7 @@ jobs:
           arguments: build
 
       - name: escape when fail to test
-        if: failure() && steps.build.conclusion == 'failure'
+        if: failure()
         run:
           echo "FAIL!"
           exit 1
