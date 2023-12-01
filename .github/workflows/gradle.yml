@@ -50,11 +50,10 @@ jobs:
     needs: build
     steps:
       - name: escape when fail to test
-        run: |
-          if [ ${{ failure() }} ]; then
-            echo "you have a problem!"
-            exit 1
-          fi
+        if: failure()
+        run:
+          echo "Fail!"
+          exit(1)
 
 
         
