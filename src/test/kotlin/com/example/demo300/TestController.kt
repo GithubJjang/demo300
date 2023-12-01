@@ -18,11 +18,4 @@ class TestController {
         mockMvc.perform(get("/"))
             .andExpect(status().isOk);
     }
-
-
-
-    @GetMapping("/")
-    fun hello(): String {
-        return "hello123"
-    }
 }
