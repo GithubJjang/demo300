@@ -31,7 +31,6 @@ jobs:
         uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
         with:
           arguments: build
-
       # Gradle test를 실행한다
       - name: Test with Gradle
         run: ./gradlew --info test
@@ -39,11 +38,13 @@ jobs:
         run:
           echo "you success build"
 
+
       - name: A. 테스트 결과를 PR에 코멘트로 등록합니다
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
           files: build/test-results/**/*.xml
+
 
 
 
