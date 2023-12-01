@@ -35,7 +35,6 @@ jobs:
       - name: escape when fail to test
         if: failure()
         run:
-          echo "FAIL!"
           exit 1
 
       # Gradle test를 실행한다
