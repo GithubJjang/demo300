@@ -33,10 +33,11 @@ jobs:
           arguments: build
 
       - name: escape when fail to test
-        if: failure()
-        run:
-          echo "Fail!"
+        run: |
+          if [ ${{ failure() }} ]; then
+          echo "you have a problem!"
           exit 1
+          fi
 
       # Gradle test를 실행한다
       - name: Test with Gradle
@@ -46,11 +47,11 @@ jobs:
           echo "you success build"
 
 
-      - name: A. 테스트 결과를 PR에 코멘트로 등록합니다
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always()
-        with:
-          files: build/test-results/**/*.xml
+      #- name: A. 테스트 결과를 PR에 코멘트로 등록합니다
+      #  uses: EnricoMi/publish-unit-test-result-action@v2
+      #  if: always()
+      #  with:
+      #    files: build/test-results/**/*.xml
 
 
 
