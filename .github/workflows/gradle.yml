@@ -34,7 +34,7 @@ jobs:
 
       - name: escape when fail to test
         if: failure()
-        run:
+        run: |
           exit 1
 
       # Gradle test를 실행한다
