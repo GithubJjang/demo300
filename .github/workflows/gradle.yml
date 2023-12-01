@@ -48,7 +48,7 @@ jobs:
         if: failure()
         run: |
           git log
-          git reset --hard HEAD^
+          git reset --hard HEAD~1
           git push --force origin master
       - name: Only success
         if: success()
