@@ -34,17 +34,16 @@ jobs:
 
       # Gradle test를 실행한다
       - name: Test with Gradle
-        run: ./gradlew --info test || exit 1
-
+        run: ./gradlew --info test
       - name: Check Build log
         run:
           echo "you success build"
 
-      #- name: A. 테스트 결과를 PR에 코멘트로 등록합니다
-      #  uses: EnricoMi/publish-unit-test-result-action@v2
-      #  if: always()
-      #  with:
-      #    files: build/test-results/**/*.xml
+      - name: A. 테스트 결과를 PR에 코멘트로 등록합니다
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: build/test-results/**/*.xml
 
 
 
