@@ -19,7 +19,6 @@ class TestControllerTest {
         mockMvc.perform(get("/"))
             .andExpect(status().isOk)
             .andExpect(content().string("hello123"))
-            ABCDEFG
 
     }
 }

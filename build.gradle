@@ -48,3 +48,4 @@ bootJar{
 	archiveFileName = 'prac.jar' //jar파일명
 	archiveVersion = "0.0.1"
 }
+
