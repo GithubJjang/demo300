@@ -44,22 +44,22 @@ jobs:
         run:
           echo "you success build"
 
-      - name: Only fail
-        if: failure()
-        run: |
-          git log
-          git reset --hard HEAD~1
-          git push --force origin master
-      - name: Only success
-        if: success()
-        run:
-          echo "operated"
-          cd demo300
-          git add .
-          git config --global user.email "github-actions@github.com"
-          git config --global user.name "github-actions"
-          git commit -am "Stop"
-          git push
+     # - name: Only fail
+     #   if: failure()
+     #   run: |
+     #     git log
+     #     git reset --hard HEAD~1
+     #     git push --force origin master
+     # - name: Only success
+     #   if: success()
+     #   run:
+     #     echo "operated"
+     #     cd demo300
+     #     git add .
+     #     git config --global user.email "github-actions@github.com"
+     #     git config --global user.name "github-actions"
+     #     git commit -am "Stop"
+     #     git push
 
 
       #- name: GitHub Actions Bot
