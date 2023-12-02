@@ -42,41 +42,7 @@ jobs:
         run: ./gradlew --info test
       - name: Check Build log
         run:
-          echo "you success build"
-
-     # - name: Only fail
-     #   if: failure()
-     #   run: |
-     #     git log
-     #     git reset --hard HEAD~1
-     #     git push --force origin master
-     # - name: Only success
-     #   if: success()
-     #   run:
-     #     echo "operated"
-     #     cd demo300
-     #     git add .
-     #     git config --global user.email "github-actions@github.com"
-     #     git config --global user.name "github-actions"
-     #     git commit -am "Stop"
-     #     git push
-
-
-      #- name: GitHub Actions Bot
-      #  uses: actions/github-script@v6
-      #  with:
-      #      github-token: ${{ secrets.GITHUB_TOKEN }}
-      #      script: |
-      #        // Your GitHub Actions bot logic here
-      #        core.info("Hello from GitHub Actions bot!");
-
-
-      #- name: A. 테스트 결과를 PR에 코멘트로 등록합니다
-      #  uses: EnricoMi/publish-unit-test-result-action@v2
-      #  if: always()
-      #  with:
-      #    files: build/test-results/**/*.xml
-
+          echo "test success"
 
 
 
