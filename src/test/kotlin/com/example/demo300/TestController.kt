@@ -18,7 +18,7 @@ class TestControllerTest {
     fun testHelloEndpoint() {
         mockMvc.perform(get("/"))
             .andExpect(status().isOk)
-            .andExpect(content().string("123456789"))
+            .andExpect(content().string("hello123"))
 
     }
 }
