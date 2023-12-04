@@ -8,6 +8,5 @@ class TestController {
     @GetMapping("/")
     fun hello(): String {
         return "hello123"
-        abcdef
     }
 }
