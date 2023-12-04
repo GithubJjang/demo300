@@ -23,6 +23,19 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build 
 
+      - name: Run JUnit tests
+        run: ./gradlew test
+
+      - name: Check if JUnit tests passed
+        run: |
+          test_result=$(./gradlew test --quiet)
+          if [[ $test_result == *"BUILD SUCCESS"* ]]; then
+            echo "JUnit tests passed. Proceeding to merge."
+            # Add your merge command here, e.g., git merge main
+          else
+            echo "JUnit tests failed. Do not proceed with the merge."
+          fi
+
 
 
 
