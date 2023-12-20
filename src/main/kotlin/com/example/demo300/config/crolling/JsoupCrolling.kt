@@ -13,10 +13,12 @@ import org.springframework.stereotype.Component
 @Component
 class JsoupCrolling {
 
+    private var status : Boolean = true
+
     @Autowired
     private lateinit var slopeService: SlopeService
 
-    @Scheduled(fixedDelay = 60000)
+    @Scheduled(fixedDelay = 1000)
     fun crawlingFunc1() {
         try {
             // 1. Get HTML document
@@ -47,11 +49,11 @@ class JsoupCrolling {
                     slopeName = slopeNameElement?.text() ?: ""
 
                     val tdElements: Elements = e.select("td[class='']")
-                    println(slopeName)
-                    println(difficulty)
+                    //println(slopeName)
+                    //println(difficulty)
                     for (td: Element in tdElements) {
                         val tdContent: String = td.text()
-                        println(tdContent)
+                        //println(tdContent)
                         // Day/Night/Late Night/Remarks in order
                         when (tdElements.indexOf(td)) {
                             0 -> day = tdContent
@@ -65,7 +67,12 @@ class JsoupCrolling {
                     // println("Size: ${dataBox.size}")
                     // println()
                     val slope = Slope(slopeName, day, night, lateNight, remarks, difficulty)
-                    slopeService.updateSlope(slope)
+                    if(status) {
+                        slopeService.setSlope(slope)
+                    }
+                    else{
+                        slopeService.update(slope);
+                    }
                 }
 
                 // 2. Separate handling for special cases
@@ -73,7 +80,7 @@ class JsoupCrolling {
                     val tsElements: Elements = e.select("td.lineBold")
                     for (ts: Element in tsElements) {
                         val tsContent: String = ts.text()
-                        println(tsContent)
+                        //println(tsContent)
                         // Name/Day/Night/Late Night/Remarks in order
                         when (tsElements.indexOf(ts)) {
                             0 -> slopeName = tsContent
@@ -84,12 +91,18 @@ class JsoupCrolling {
                         }
                     }
                     val slope = Slope(slopeName, day, night, lateNight, remarks, difficulty)
-                    slopeService.updateSlope(slope)
+                    if(status) {
+                        slopeService.setSlope(slope)
+                    }
+                    else{
+                        slopeService.update(slope);
+                    }
                 }
             }
         } catch (e: Exception) {
             // Handle exceptions as needed
             e.printStackTrace()
         }
+        status=false
     }
 }
