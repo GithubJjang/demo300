@@ -1,5 +1,6 @@
 package com.example.demo300
 
+import com.example.demo300.dummyController.TestController
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
