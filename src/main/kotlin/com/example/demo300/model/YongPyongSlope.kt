@@ -8,7 +8,7 @@ import jakarta.persistence.Id
 
 
 @Entity
-class Slope {
+class YongPyongSlope {
     // 자동으로 넘버링을 한다.
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
